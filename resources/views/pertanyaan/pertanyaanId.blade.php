@@ -13,6 +13,7 @@
       <th style="width: 10px">No.</th>
       <th>Judul</th>
       <th>Isi</th>
+      <th>Tags</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,7 @@
          <tr>
           <td>{{$key+1}}</td>
           <td>{{ $val->judul}}</td>
+          <td>{{ $val->isi}}</td>
           <td>{{ $val->isi}}</td>
         </tr>
       @empty

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Pertanyaan;
 use App\Tag;
 use Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PertanyaanController extends Controller
 {
@@ -102,15 +103,16 @@ class PertanyaanController extends Controller
         // $user->pertanyaans()->save($pertanyaan);
         // $user->pertanyaans()->associate($pertanyaan);
         
-        
+        $aler = Alert::success('Berhasil', 'Pertanyaan berhasil disimpan');
+        // dd($aler);
 
-    	return redirect('pertanyaan')->with("success",'data berhasil disimpan');
+    	return redirect('pertanyaan');//->with("success",'data berhasil disimpan');
     }
 
     function update($id,Request $request)
     {
         $validatedData = $request->validate([
-            'judul' => 'required|unique:pertanyaan',
+            'judul' => 'required',
             'isi' => 'required',
         ]);
 
@@ -130,8 +132,8 @@ class PertanyaanController extends Controller
                 'isi' => $request->isi,
             ]
         );
-        
-        return redirect('pertanyaan')->with("success",'data berhasil disimpan');
+        $aler = Alert::success('Berhasil', 'Pertanyaan berhasil diperbaharui');
+        return redirect('pertanyaan');//->with("success",'data berhasil disimpan');
     }
 
     function destroy($id)
@@ -140,8 +142,9 @@ class PertanyaanController extends Controller
         // ->where('id', $id)
         // ->delete();
 
-        Pertanyaan::destroy($id);        
-        return redirect('pertanyaan')->with("success",'data berhasil dihapus');
+        Pertanyaan::destroy($id);
+        $aler = Alert::success('Berhasil', 'Pertanyaan berhasil dihapus');        
+        return redirect('pertanyaan');//->with("success",'data berhasil dihapus');
     }
 
 
