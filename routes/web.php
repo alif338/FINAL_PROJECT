@@ -32,6 +32,9 @@ Route::get('/view_form', function () {
 Route::get('/view_guest', function () {
 	return view('example.view_guest');
 });
+Route::get('/detail_data', function () {
+	return view('example.view_detail');
+});
 // 
 /*Route::get('/tbl', function () //Hari 3 – Memasangkan Template dengan Laravel Blade
 {

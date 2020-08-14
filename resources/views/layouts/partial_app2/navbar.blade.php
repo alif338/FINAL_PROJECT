@@ -22,7 +22,7 @@
                     <a href="/view_guest" class="nav-link">Guest</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/detail" class="nav-link">Detail</a>
+                    <a href="/detail_data" class="nav-link">Detail</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">Contact</a>
