@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\pertanyaan;
+use App\Pertanyaan;
+use App\Tag;
 use Auth;
 
 class PertanyaanController extends Controller
@@ -18,7 +19,9 @@ class PertanyaanController extends Controller
     function index($value='')
     {
     	// $list = DB::table('pertanyaan')->get();
-        $list = pertanyaan::all();
+        $user = Auth::user();
+        // $list = Pertanyaan::all();
+        $list = $user->pertanyaans;
         return view('pertanyaan.pertanyaan', ['list' => $list]);
     }
 
@@ -26,7 +29,7 @@ class PertanyaanController extends Controller
     {
         // $list = DB::table('pertanyaan')->where('id',$id)
         // ->get();
-        $list = pertanyaan::where('id', $id)
+        $list = Pertanyaan::where('id', $id)
                // ->orderBy('name', 'desc')
                // ->take(10)
                ->get();
@@ -38,7 +41,7 @@ class PertanyaanController extends Controller
     {
         // $post = DB::table('pertanyaan')->where('id',$id)
         // ->first();
-        $post = pertanyaan::find($id);
+        $post = Pertanyaan::find($id);
         return view('pertanyaan.pertanyaanEdit', compact('post'));
     }
 
@@ -69,12 +72,37 @@ class PertanyaanController extends Controller
         // $pertanyaan->profil_id = 1;
 
         // $pertanyaan->save();
-		
-        $pertanyaan = pertanyaan::create([
+               
+        //*/
+
+        $tags = explode(',', $request->tags);
+        
+        $tag_ids=[];
+        foreach ($tags as $key) {
+             $tag = Tag::where('tag_name', $key)->first();
+             if ($tag) {
+                 $tag_ids[]=$tag->id;
+             }else{
+                $new_tag = Tag::create(['tag_name'=> $key]);
+                $tag_ids[]=$new_tag->id;
+             }
+        }
+        $user = Auth::user();       
+        // dd($user);
+
+        $pertanyaan = Pertanyaan::create([
              'judul' => $request->judul, 
              'isi' => $request->isi,
-             'profil_id' => Auth::user()->id,
+             'user_id' => $user->id,
             ]);
+
+        $pertanyaan->tags()->sync($tag_ids);
+
+        
+        // $user->pertanyaans()->save($pertanyaan);
+        // $user->pertanyaans()->associate($pertanyaan);
+        
+        
 
     	return redirect('pertanyaan')->with("success",'data berhasil disimpan');
     }
@@ -95,7 +123,7 @@ class PertanyaanController extends Controller
         //     ]
         // );
 
-        pertanyaan::where('id', $id)
+        Pertanyaan::where('id', $id)
         ->update(
             [
                 'judul' => $request->judul, 
@@ -112,7 +140,7 @@ class PertanyaanController extends Controller
         // ->where('id', $id)
         // ->delete();
 
-        pertanyaan::destroy($id);        
+        Pertanyaan::destroy($id);        
         return redirect('pertanyaan')->with("success",'data berhasil dihapus');
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKomentarPertanyaanTable extends Migration
+class CreatePertanyaanHasTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateKomentarPertanyaanTable extends Migration
      */
     public function up()
     {
-        Schema::create('komentar_pertanyaan', function (Blueprint $table) {
+        Schema::create('pertanyaan_has_tags', function (Blueprint $table) {
             $table->id();
-            $table->longText('isi');
-            $table->dateTime('tanggal_dibuat', 0);       
             $table->unsignedBigInteger('pertanyaan_id');
-            $table->unsignedBigInteger('user_id');     
+            $table->unsignedBigInteger('tag_id');
             $table->foreign('pertanyaan_id')->references('id')->on('pertanyaan')->onDelete('CASCADE')->onUpdate('CASCADE');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 
@@ -31,6 +29,6 @@ class CreateKomentarPertanyaanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('komentar_pertanyaan');
+        Schema::dropIfExists('pertanyaan_has_tags');
     }
 }

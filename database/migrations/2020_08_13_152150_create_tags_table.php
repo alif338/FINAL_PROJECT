@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProfilTable extends Migration
+class CreateTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateProfilTable extends Migration
      */
     public function up()
     {
-        Schema::create('profil', function (Blueprint $table) {
-            $table->bigIncrements('id')->unique();
-            $table->string('nama_lengkap');
-            $table->string('email');
-            $table->string('foto');
-            $table->timestamps();
+        Schema::create('tags', function (Blueprint $table) {
+            $table->id();
+            $table->string('tag_name');
         });
     }
 
@@ -29,6 +26,6 @@ class CreateProfilTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profil');
+        Schema::dropIfExists('tags');
     }
 }

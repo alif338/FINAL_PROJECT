@@ -6,7 +6,7 @@
   <h3 class="card-title">Input Pertanyaan</h3>
 </div>
 <div class="card-body">
-<form action="{{url('pertanyaan')}}" method="post">
+<form action="{{route('pertanyaan.store')}}" method="post">
   @csrf
   <div class="form-group">
     <label for="judul">Judul</label>
@@ -23,6 +23,12 @@
     @enderror
   </div>
 
+  <div class="form-group">
+    <label for="exampleInputPassword1">Tag</label>
+        <input type="text" class="form-control"  name="tags" id="txt_1" value="{{old('tags','')}}" />
+
+  </div>
+
   <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
 </div>
@@ -30,5 +36,4 @@
 @endsection
 
 @push('script')
-
 @endpush
