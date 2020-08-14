@@ -13,14 +13,22 @@
       <th style="width: 10px">No.</th>
       <th>Judul</th>
       <th>Isi</th>
+      <th>Tags</th>
     </tr>
   </thead>
   <tbody>
       @forelse ($list as $key => $val)
          <tr>
           <td>{{$key+1}}</td>
-          <td>{{ $val->judul}}</td>
-          <td>{{ $val->isi}}</td>
+          <td>{{$val->judul}}</td>
+          <td>{!!$val->isi!!}</td>
+          <td>
+            @forelse($val->tags as $tag)
+            <button class="btn btn-sm btn-primary">{{ $tag->tag_name }}</button>
+            @empty
+            tag kosong
+            @endforelse
+          </td>
         </tr>
       @empty
         <tr>

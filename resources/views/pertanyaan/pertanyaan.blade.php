@@ -21,7 +21,7 @@
          <tr>
           <td>{{$key+1}}</td>
           <td>{{ $val->judul}}</td>
-          <td>{{ $val->isi}}</td>
+          <td>{!! $val->isi !!}</td>
           <td style="display: flex;">
             <a href="{{url('pertanyaan/'.$val->id)}}" class="btn btn-default btn-sm">show</a>
             <a href="{{url('pertanyaan/'.$val->id).'/edit'}}" class="btn btn-warning btn-sm">edit</a>
@@ -45,5 +45,5 @@
 @endsection
 
 @push('script')
-
+@include('sweetalert::alert')
 @endpush
