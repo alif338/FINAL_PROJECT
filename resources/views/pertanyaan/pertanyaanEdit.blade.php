@@ -29,7 +29,7 @@
 
   <div class="form-group">
     <label for="exampleInputPassword1">Tag</label>
-        <input type="text" class="form-control"  name="tags" id="txt_1" value="{{old('tags','')}}" />
+        <input type="text" class="form-control"  name="tags" id="txt_1" value="{{old('tags', $tags)}}" />
   </div>
 
   <button type="submit" class="btn btn-primary">Simpan</button>

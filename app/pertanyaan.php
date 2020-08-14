@@ -10,8 +10,8 @@ class Pertanyaan extends Model
     // protected $primaryKey = 'id'; //default id
 
     //save metode assigment
-    protected $fillable = ["judul","isi","user_id"];    
-    // protected $guarded = []; //many col
+    // protected $fillable = ["judul","isi","user_id"];    
+    protected $guarded = []; //many col
 
 
     public function outhor()
@@ -23,4 +23,5 @@ class Pertanyaan extends Model
     {
         return $this->belongsToMany('App\Tag','pertanyaan_has_tags', 'pertanyaan_id', 'tag_id');
     }
+    
 }
