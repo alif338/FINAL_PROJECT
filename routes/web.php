@@ -19,11 +19,19 @@ use Illuminate\Support\Facades\Route;
 // Route::post('/welcome', 'AuthController@welcome');
 
 // lanjutan 
-Route::get('/', function ()
-{	
+Route::get('/', function () {
 	return view('welcome');
 });
-	
+
+Route::get('/view', function () {
+	return view('view');
+});
+Route::get('/view_form', function () {
+	return view('example.form');
+});
+Route::get('/view_guest', function () {
+	return view('example.view_guest');
+});
 // 
 /*Route::get('/tbl', function () //Hari 3 – Memasangkan Template dengan Laravel Blade
 {
@@ -45,7 +53,8 @@ Route::get('/data-tables', function ()
 // Route::delete('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@destroy');
 
 ////Pekan 4 , Hari 1 – Laravel CRUD (dengan Eloquent ORM)
-Route::resource('pertanyaan', 'PertanyaanController')->middleware('auth');
+Route::resource('pertanyaan', 'PertanyaanController');
+// Route::resource('pertanyaan', 'PertanyaanController')->middleware('auth');
 
 
 Auth::routes();
