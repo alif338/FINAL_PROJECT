@@ -8,7 +8,7 @@
 <div class="alert alert-success">{{ session("success") }}</div>
 @endif
 <table class="table table-bordered">
-  <thead>                  
+  <thead>
     <tr>
       <th style="width: 10px">No.</th>
       <th>Judul</th>
@@ -30,14 +30,14 @@
               @method('DELETE')
               <input type="submit" class="btn btn-danger btn-sm" value="delete">
             </form>
-            
+
           </td>
         </tr>
       @empty
         <tr>
           <td colspan="3">Data kosong</td>
         </tr>
-      @endforelse  
+      @endforelse
   </tbody>
 </table>
 </div>

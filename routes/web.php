@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/register', 'AuthController@register');
 // Route::post('/welcome', 'AuthController@welcome');
 
-// lanjutan 
+// lanjutan
 Route::get('/', function () {
 	return view('welcome');
 });
@@ -29,10 +29,10 @@ Route::get('/view', function () {
 Route::get('/view_form', function () {
 	return view('example.form');
 });
-Route::get('/view_guest', function () {
-	return view('example.view_guest');
-});
-// 
+Route::get('/view_guest', 'PertanyaanController@index');
+
+Route::post('/view_guest', 'PertanyaanController@store');
+//
 /*Route::get('/tbl', function () //Hari 3 – Memasangkan Template dengan Laravel Blade
 {
 	return view('adminlte.table.table');

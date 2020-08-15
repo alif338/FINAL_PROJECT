@@ -9,10 +9,12 @@ use App\Tag;
 use App\User;
 use Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Profile;
+
 
 class PertanyaanController extends Controller
 {
-    //public 
+    //public
     public function __construct()
     {
         // $this->middleware('auth')->only(['index']);
@@ -20,12 +22,15 @@ class PertanyaanController extends Controller
 
     function index($value = '')
     {
-        // $list = DB::table('pertanyaan')->get();
-        $user = Auth::user();
-        // $list = Pertanyaan::all();
-        $list = $user->pertanyaans;
-        // dd($list);
-        return view('pertanyaan.pertanyaan', ['list' => $list]);
+         //$list = DB::table('pertanyaan')->get();
+        //$user = DB;
+         $list = Pertanyaan::all();
+         $profil = Profile::all();
+
+         //$profil = DB::select('select nama_lengkap from profiles where user_id = ?', [$id]);
+        //$list = $user->pertanyaans;
+        //dd($list);
+        return view('example.view_guest', ['list' => $list, 'profil' => $profil]);
     }
 
     function show($id = 0)
@@ -36,8 +41,9 @@ class PertanyaanController extends Controller
             // ->orderBy('name', 'desc')
             // ->take(10)
             ->get();
+        //$user = Auth::user();
         // $flight = Flight::firstWhere('active', 1);
-        return view('pertanyaan.pertanyaanId', ['list' => $list]);
+        return view('example.view_guest', ['list' => $list]);
     }
 
     function edit($id = 0)
@@ -66,7 +72,7 @@ class PertanyaanController extends Controller
 
         // DB::table('pertanyaan')->insert(
         //     [
-        //     	'judul' => $request->judul, 
+        //     	'judul' => $request->judul,
         //     	'isi' => $request->isi,
         //     	'profil_id' => 1,
         //     	'jawaban_tepat_id' => 1,
@@ -107,13 +113,18 @@ class PertanyaanController extends Controller
             'user_id' => $user->id,
         ]);
 
+        $profil = DB::table('users')
+                ->where('id', $pertanyaan->user_id)
+                ->value('name');
+
+
         $pertanyaan->tags()->sync($tag_ids);
 
 
         // $user->pertanyaans()->save($pertanyaan);
         // $user->pertanyaans()->associate($pertanyaan);
         $alert = Alert::success('Berhasil', 'Pertanyaan berhasil disimpan');
-    	return redirect('pertanyaan');//->with("success",'data berhasil disimpan');
+    	return redirect('/view_guest');//->with("success",'data berhasil disimpan');
 
     }
 
@@ -128,7 +139,7 @@ class PertanyaanController extends Controller
         // ->where('id', $id)
         // ->update(
         //     [
-        //         'judul' => $request->judul, 
+        //         'judul' => $request->judul,
         //         'isi' => $request->isi,
         //     ]
         // );
@@ -136,7 +147,7 @@ class PertanyaanController extends Controller
         /*Pertanyaan::where('id', $id)
         ->update(
             [
-                'judul' => $request->judul, 
+                'judul' => $request->judul,
                 'isi' => $request->isi,
             ]
         );
@@ -159,7 +170,7 @@ class PertanyaanController extends Controller
         $pertanyaan = Pertanyaan::where(['id'=> $id])
         ->update(
             [
-                'judul' => $request->judul, 
+                'judul' => $request->judul,
                 'isi' => $request->isi,
             ]
         );
@@ -180,7 +191,7 @@ class PertanyaanController extends Controller
         // ->delete();
 
         Pertanyaan::destroy($id);
-        $alert = Alert::success('Berhasil', 'Pertanyaan berhasil dihapus');        
+        $alert = Alert::success('Berhasil', 'Pertanyaan berhasil dihapus');
         return redirect('pertanyaan');//->with("success",'data berhasil dihapus');
 
     }
