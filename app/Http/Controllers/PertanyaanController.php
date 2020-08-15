@@ -146,7 +146,7 @@ class PertanyaanController extends Controller
         // $user->pertanyaans()->save($pertanyaan);
         // $user->pertanyaans()->associate($pertanyaan);
         $alert = Alert::success('Berhasil', 'Pertanyaan berhasil disimpan');
-    	return redirect('/view_guest');//->with("success",'data berhasil disimpan');
+        return redirect('pertanyaan'); //->with("success",'data berhasil disimpan');
 
     }
 
@@ -189,14 +189,13 @@ class PertanyaanController extends Controller
 
         $user = Auth::user();
 
-       $pertanyaan = Pertanyaan::where(['id' => $id])
+        $pertanyaan = Pertanyaan::where(['id' => $id])
             ->update(
                 [
                     'judul' => $request->judul,
                     'isi' => $request->isi,
                 ]
             );
-
         $pertanyaan = Pertanyaan::find($id);
         // dd($user);
         $pertanyaan->tags()->sync($tag_ids, false);
@@ -215,7 +214,7 @@ class PertanyaanController extends Controller
 
         Pertanyaan::destroy($id);
         $alert = Alert::success('Berhasil', 'Pertanyaan berhasil dihapus');
-        return redirect('pertanyaan');//->with("success",'data berhasil dihapus');
+        return redirect('pertanyaan'); //->with("success",'data berhasil dihapus');
 
     }
 
