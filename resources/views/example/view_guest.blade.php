@@ -8,6 +8,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1>Area Public</h1>
+                <a href="{{ url('pertanyaan/create') }}" class="btn btn-primary mb-2">TAMBAH DATA</a>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -26,7 +27,7 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Projects Detail</h3>
+            <h3 class="card-title">Recent Activity</h3>
 
             <!-- <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -37,7 +38,7 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+                <div class="col-12 col-md-12 col-lg-8 order-1 order-md-1">
                     <!-- <div class="row">
                         <div class="col-12 col-sm-4">
                             <div class="info-box bg-light">
@@ -64,67 +65,46 @@
                             </div>
                         </div>
                     </div> -->
+
                     <div class="row">
                         <div class="col-12">
-                            <h4>Recent Activity</h4>
+
+                        @forelse ($list as $key => $val)
                             <div class="post">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="{{asset('adminLte/dist/img/user1-128x128.jpg')}}" alt="user image">
-                                    <span class="username">
-                                        <a href="#">Jonathan Burke Jr.</a>
-                                    </span>
-                                    <span class="description">Shared publicly - 7:45 PM today</span>
+                                <div class="question-summary narrow d-inline-flex">
+                                    <div onclick="{{url('pertanyaan/'.$val->id)}}" class="p-3">
+                                        <div class="votes">
+                                            <div class="mini-counts"><span title="0 votes">0</span></div>
+                                            <div>votes</div>
+                                        </div>
+
+                                        <div class="status unanswered">
+                                            <div class="mini-counts"><span title="0 answers">0</span></div>
+                                            <div>answers</div>
+                                        </div>
+
+                                    </div>
+                                    <div class="summary">
+
+                                        <h4><a href="#" class="question-hyperlink">{{ $val->judul}}</a></h4>
+                                        <p>{!! $val->isi !!}</p>
+                                        <div class="tags">
+                                            @forelse ($val->tags as $val1)
+                                            <a href="#" class="badge badge-secondary">{{ $val1->tag_name }}</a>
+                                            @empty
+                                            <p>no tags</p>
+                                            @endforelse
+                                        </div>
+                                        <div class="started">
+                                            Asked : ... by ...
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- /.user-block -->
-                                <p>
-                                    Lorem ipsum represents a long-held tradition for designers,
-                                    typographers and the like. Some people hate it and argue for
-                                    its demise, but others ignore.
-                                </p>
-
-                                <p>
-                                    <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
-                                </p>
                             </div>
+                        @empty
+                            <h3>No Posts</h3>
+                        @endforelse
 
-                            <div class="post clearfix">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="{{asset('adminLte/dist/img/user1-128x128.jpg')}}" alt="User Image">
-                                    <span class="username">
-                                        <a href="#">Sarah Ross</a>
-                                    </span>
-                                    <span class="description">Sent you a message - 3 days ago</span>
-                                </div>
-                                <!-- /.user-block -->
-                                <p>
-                                    Lorem ipsum represents a long-held tradition for designers,
-                                    typographers and the like. Some people hate it and argue for
-                                    its demise, but others ignore.
-                                </p>
-                                <p>
-                                    <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 2</a>
-                                </p>
-                            </div>
-
-                            <div class="post">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="{{asset('adminLte/dist/img/user1-128x128.jpg')}}" alt="user image">
-                                    <span class="username">
-                                        <a href="#">Jonathan Burke Jr.</a>
-                                    </span>
-                                    <span class="description">Shared publicly - 5 days ago</span>
-                                </div>
-                                <!-- /.user-block -->
-                                <p>
-                                    Lorem ipsum represents a long-held tradition for designers,
-                                    typographers and the like. Some people hate it and argue for
-                                    its demise, but others ignore.
-                                </p>
-
-                                <p>
-                                    <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v1</a>
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
