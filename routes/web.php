@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 // lanjutan 
 Route::get('/', function () {
-	return view('welcome');
+	echo "HELLO WORD";
+	// return view('welcome');
 });
 
 Route::get('/view', function () {
