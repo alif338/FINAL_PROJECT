@@ -28,24 +28,8 @@
 <div class="col-md-12">
     <!-- Box Comment -->
     <div class="card card-widget">
-        <div class="card-header">
-            <div class="user-block">
-                <img class="img-circle" src="{{asset('adminLte/dist/img/user1-128x128.jpg')}}" alt="User Image">
-                <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
-                <span class="description">Shared publicly - 7:30 PM Today</span>
-            </div>
-            <!-- /.user-block -->
-
-            <div class="card-tools">
-
-                <!-- <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Mark as read">
-                    <i class="far fa-circle"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-                </button> -->
-
-            </div>
+        <div class="card-header p-3">
+           <h2>JUDUL UTAMA</h2>
             <!-- /.card-tools -->
         </div>
         <!-- /.card-header -->

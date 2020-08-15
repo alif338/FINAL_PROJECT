@@ -15,6 +15,8 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <div class="p-3"></div>
+                    <a href="{{ route('pertanyaan.index') }}" class="btn btn-primary mb-2">Menuju Forum</a>
                 </div>
             </div>
         </div>

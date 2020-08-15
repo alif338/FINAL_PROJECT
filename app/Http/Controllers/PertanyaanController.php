@@ -10,7 +10,7 @@ use App\User;
 use Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Profile;
-
+use App\Http\Controllers\Point_v;
 
 class PertanyaanController extends Controller
 {
@@ -70,6 +70,7 @@ class PertanyaanController extends Controller
             'isi' => 'required',
         ]);
 
+
         $user = Auth::user();
         $proses = \App\Jawaban::create([
             'judul' => isset($request->judul) ? $request->judul : NULL,
@@ -79,7 +80,7 @@ class PertanyaanController extends Controller
         ]);
 
         $alert = Alert::success('Berhasil', 'Jawaban berhasil disimpan');
-        return redirect("pertanyaan/detail/" . $request->id);
+        return redirect("pertanyaan/detail/{$request->id}");
     }
 
     function store(Request $request)
@@ -132,20 +133,17 @@ class PertanyaanController extends Controller
             'user_id' => $user->id,
         ]);
 
-<<<<<<< HEAD
         $profil = DB::table('users')
                 ->where('id', $pertanyaan->user_id)
                 ->value('name');
 
-=======
-        $point_v = \App\Point_v::create([
-            'pertanyaan_id' => $pertanyaan->id,
-            'jumlah_upvote' => '0',
-            'jumlah_downvote' => '0',
-            'jumlah_jawaban_relevan' => '0',
-            'point' => '0',
-        ]);
->>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
+      //  $point_v = Point_v::create([
+      //      'pertanyaan_id' => $pertanyaan->id,
+       //     'jumlah_upvote' => '0',
+       //     'jumlah_downvote' => '0',
+       //     'jumlah_jawaban_relevan' => '0',
+       //     'point' => '0',
+       // ]);
 
         $pertanyaan->tags()->sync($tag_ids);
 
@@ -153,11 +151,8 @@ class PertanyaanController extends Controller
         // $user->pertanyaans()->save($pertanyaan);
         // $user->pertanyaans()->associate($pertanyaan);
         $alert = Alert::success('Berhasil', 'Pertanyaan berhasil disimpan');
-<<<<<<< HEAD
     	return redirect('/view_guest');//->with("success",'data berhasil disimpan');
-=======
-        return redirect('pertanyaan'); //->with("success",'data berhasil disimpan');
->>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
+       // return redirect('pertanyaan'); //->with("success",'data berhasil disimpan');
 
     }
 
@@ -200,15 +195,6 @@ class PertanyaanController extends Controller
 
         $user = Auth::user();
 
-<<<<<<< HEAD
-        $pertanyaan = Pertanyaan::where(['id'=> $id])
-        ->update(
-            [
-                'judul' => $request->judul,
-                'isi' => $request->isi,
-            ]
-        );
-=======
         $pertanyaan = Pertanyaan::where(['id' => $id])
             ->update(
                 [
@@ -216,7 +202,6 @@ class PertanyaanController extends Controller
                     'isi' => $request->isi,
                 ]
             );
->>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
         $pertanyaan = Pertanyaan::find($id);
         // dd($user);
         $pertanyaan->tags()->sync($tag_ids, false);
@@ -235,9 +220,6 @@ class PertanyaanController extends Controller
 
         Pertanyaan::destroy($id);
         $alert = Alert::success('Berhasil', 'Pertanyaan berhasil dihapus');
-<<<<<<< HEAD
-        return redirect('pertanyaan');//->with("success",'data berhasil dihapus');
-=======
         return redirect('pertanyaan'); //->with("success",'data berhasil dihapus');
 
     }
@@ -248,11 +230,12 @@ class PertanyaanController extends Controller
         // echo $id;
         // $head = \App\Jawaban::find($id)->pertanyaan;
         $get = Pertanyaan::find($id);
+
+        //dd($get->tags);
         // $detail = $get->jawaban;
         // $get = \App\Jawaban::find($id);
         // $get = \App\Jawaban::find($id)->pertanyaan->isi;
-        // dd($get);
->>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
+
 
         return view('pertanyaan.detail', compact('get'));
     }

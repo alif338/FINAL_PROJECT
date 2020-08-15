@@ -77,8 +77,11 @@
                     <!-- /.attachment-block -->
 
                     <!-- Social sharing buttons -->
-                    <button type="button" class="btn btn-info btn-sm"> #Laravel</button>
-                    <button type="button" class="btn btn-info btn-sm"> #PHP 7</button>
+                    @forelse($get->tags as $init)
+                    <button type="button" class="btn btn-info btn-sm">{{ $init->tag_name }}</button>
+                    @empty
+                    <p>No Tags</p>
+                    @endforelse
                     <!-- <span class="float-right text-muted">45 likes - 2 answer</span> -->
                 </div>
             </div>
@@ -135,8 +138,11 @@
                         <!-- /.attachment-block -->
 
                         <!-- Social sharing buttons -->
-                        <button type="button" class="btn btn-info btn-sm"> Laravel</button>
-                        <button type="button" class="btn btn-info btn-sm"> PHP 7</button>
+                        @forelse($get->tags as $init)
+                        <button type="button" class="btn btn-info btn-sm">{{ $init->tag_name }}</button>
+                        @empty
+                        <p>No Tags</p>
+                        @endforelse
                         <!-- <span class="float-right text-muted">45 likes - 2 answer</span> -->
                     </div>
                     <!-- /.comment-text -->

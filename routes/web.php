@@ -29,16 +29,7 @@ Route::get('/view', function () {
 Route::get('/view_form', function () {
 	return view('example.form');
 });
-<<<<<<< HEAD
 Route::get('/view_guest', 'PertanyaanController@index');
-
-Route::post('/view_guest', 'PertanyaanController@store');
-//
-=======
-Route::get('/view_guest', function () {
-	$list = [];
-	return view('example.view_guest', compact('list'));
-});
 Route::get('/detail_data', function () {
 	return view('example.view_detail');
 });
@@ -47,8 +38,7 @@ Route::get('/pertanyaan/detail/{id}', 'PertanyaanController@detail');
 Route::post('/pertanyaan/answer', 'PertanyaanController@answer');
 Route::post('/upvote_pro', 'PostController@upvote_pro');
 Route::post('/downvote_pro', 'PostController@downvote_pro');
-// 
->>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
+//
 /*Route::get('/tbl', function () //Hari 3 – Memasangkan Template dengan Laravel Blade
 {
 	return view('adminlte.table.table');
@@ -78,10 +68,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-<<<<<<< HEAD
+
      \UniSharp\LaravelFilemanager\Lfm::routes();
  });
-=======
-	\UniSharp\LaravelFilemanager\Lfm::routes();
-});
->>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
+
+
