@@ -132,12 +132,6 @@ class PertanyaanController extends Controller
             'user_id' => $user->id,
         ]);
 
-<<<<<<< HEAD
-        $profil = DB::table('users')
-                ->where('id', $pertanyaan->user_id)
-                ->value('name');
-
-=======
         $point_v = \App\Point_v::create([
             'pertanyaan_id' => $pertanyaan->id,
             'jumlah_upvote' => '0',
@@ -145,7 +139,6 @@ class PertanyaanController extends Controller
             'jumlah_jawaban_relevan' => '0',
             'point' => '0',
         ]);
->>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
 
         $pertanyaan->tags()->sync($tag_ids);
 
@@ -153,11 +146,7 @@ class PertanyaanController extends Controller
         // $user->pertanyaans()->save($pertanyaan);
         // $user->pertanyaans()->associate($pertanyaan);
         $alert = Alert::success('Berhasil', 'Pertanyaan berhasil disimpan');
-<<<<<<< HEAD
     	return redirect('/view_guest');//->with("success",'data berhasil disimpan');
-=======
-        return redirect('pertanyaan'); //->with("success",'data berhasil disimpan');
->>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
 
     }
 
@@ -200,23 +189,14 @@ class PertanyaanController extends Controller
 
         $user = Auth::user();
 
-<<<<<<< HEAD
-        $pertanyaan = Pertanyaan::where(['id'=> $id])
-        ->update(
-            [
-                'judul' => $request->judul,
-                'isi' => $request->isi,
-            ]
-        );
-=======
-        $pertanyaan = Pertanyaan::where(['id' => $id])
+       $pertanyaan = Pertanyaan::where(['id' => $id])
             ->update(
                 [
                     'judul' => $request->judul,
                     'isi' => $request->isi,
                 ]
             );
->>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
+
         $pertanyaan = Pertanyaan::find($id);
         // dd($user);
         $pertanyaan->tags()->sync($tag_ids, false);
@@ -235,10 +215,7 @@ class PertanyaanController extends Controller
 
         Pertanyaan::destroy($id);
         $alert = Alert::success('Berhasil', 'Pertanyaan berhasil dihapus');
-<<<<<<< HEAD
         return redirect('pertanyaan');//->with("success",'data berhasil dihapus');
-=======
-        return redirect('pertanyaan'); //->with("success",'data berhasil dihapus');
 
     }
 
@@ -252,8 +229,6 @@ class PertanyaanController extends Controller
         // $get = \App\Jawaban::find($id);
         // $get = \App\Jawaban::find($id)->pertanyaan->isi;
         // dd($get);
->>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
-
         return view('pertanyaan.detail', compact('get'));
     }
 }

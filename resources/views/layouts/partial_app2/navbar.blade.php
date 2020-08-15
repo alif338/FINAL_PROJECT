@@ -44,9 +44,6 @@
         </div>
 
         <!-- Right navbar links -->
-<<<<<<< HEAD
-
-=======
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item dropdown">
@@ -137,6 +134,5 @@
                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="fas fa-th-large"></i></a>
             </li>
         </ul>
->>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
     </div>
 </nav>
