@@ -69,7 +69,11 @@
                     <div class="row">
                         <div class="col-12">
 
+<<<<<<< HEAD
                         @forelse ($list as $key => $val)
+=======
+                            @forelse($list as $key => $val)
+>>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
                             <div class="post">
                                 <div class="question-summary narrow d-inline-flex">
                                     <div onclick="{{url('pertanyaan/'.$val->id)}}" class="p-3">
@@ -95,6 +99,7 @@
                                             <p>no tags</p>
                                             @endforelse
                                         </div>
+<<<<<<< HEAD
 
                                         @foreach($profil as $key2 => $val2)
                                         @if($val2['user_id'] === $val['user_id'])
@@ -109,6 +114,17 @@
                         @empty
                             <h3>No Posts</h3>
                         @endforelse
+=======
+                                        <div class="started">
+                                            Asked : ... by ...
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @empty
+                            <h3>No Posts</h3>
+                            @endforelse
+>>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
 
                         </div>
                     </div>

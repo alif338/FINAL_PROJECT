@@ -41,9 +41,22 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Profile');
     }
+    public function jawaban()
+    {
+        return $this->hasMany('App\jawaban');
+    }
 
     public function pertanyaans()
     {
         return $this->hasMany('App\Pertanyaan', 'user_id');
+    }
+
+    public function upvote()
+    {
+        return $this->hasMany('App\Upvote', 'user_id');
+    }
+    public function downvote()
+    {
+        return $this->hasMany('App\Downvote', 'user_id');
     }
 }

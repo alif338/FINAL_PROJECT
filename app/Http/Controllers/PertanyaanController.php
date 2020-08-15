@@ -17,6 +17,7 @@ class PertanyaanController extends Controller
     //public
     public function __construct()
     {
+        // $this->middleware('auth');
         // $this->middleware('auth')->only(['index']);
     }
 
@@ -51,16 +52,34 @@ class PertanyaanController extends Controller
         // $post = DB::table('pertanyaan')->where('id',$id)
         // ->first();
         $post = Pertanyaan::find($id);
-        $tags="";
+        $tags = "";
         foreach ($post->tags as $tag) {
-            $tags.=$tag->tag_name.',';
+            $tags .= $tag->tag_name . ',';
         }
-        return view('pertanyaan.pertanyaanEdit', compact('post','tags'));
+        return view('pertanyaan.pertanyaanEdit', compact('post', 'tags'));
     }
 
     function create()
     {
         return view('pertanyaan.form_pertanyaan');
+    }
+
+    function answer(Request $request)
+    {
+        $validatedData = $request->validate([
+            'isi' => 'required',
+        ]);
+
+        $user = Auth::user();
+        $proses = \App\Jawaban::create([
+            'judul' => isset($request->judul) ? $request->judul : NULL,
+            'isi' => $request->isi,
+            'user_id' => $user->id,
+            'pertanyaan_id' => $request->id,
+        ]);
+
+        $alert = Alert::success('Berhasil', 'Jawaban berhasil disimpan');
+        return redirect("pertanyaan/detail/" . $request->id);
     }
 
     function store(Request $request)
@@ -92,7 +111,7 @@ class PertanyaanController extends Controller
 
         $tag_ids = [];
         foreach ($tags as $key) {
-            if ($key==null) {
+            if ($key == null) {
                 continue;
             }
 
@@ -113,10 +132,20 @@ class PertanyaanController extends Controller
             'user_id' => $user->id,
         ]);
 
+<<<<<<< HEAD
         $profil = DB::table('users')
                 ->where('id', $pertanyaan->user_id)
                 ->value('name');
 
+=======
+        $point_v = \App\Point_v::create([
+            'pertanyaan_id' => $pertanyaan->id,
+            'jumlah_upvote' => '0',
+            'jumlah_downvote' => '0',
+            'jumlah_jawaban_relevan' => '0',
+            'point' => '0',
+        ]);
+>>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
 
         $pertanyaan->tags()->sync($tag_ids);
 
@@ -124,7 +153,11 @@ class PertanyaanController extends Controller
         // $user->pertanyaans()->save($pertanyaan);
         // $user->pertanyaans()->associate($pertanyaan);
         $alert = Alert::success('Berhasil', 'Pertanyaan berhasil disimpan');
+<<<<<<< HEAD
     	return redirect('/view_guest');//->with("success",'data berhasil disimpan');
+=======
+        return redirect('pertanyaan'); //->with("success",'data berhasil disimpan');
+>>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
 
     }
 
@@ -158,15 +191,16 @@ class PertanyaanController extends Controller
 
         $tag_ids = [];
         foreach ($tags as $key) {
-            if ($key==null) {
+            if ($key == null) {
                 continue;
             }
-            $tag = Tag::firstOrCreate(['tag_name'=> trim($key)]);
+            $tag = Tag::firstOrCreate(['tag_name' => trim($key)]);
             $tag_ids[] = $tag->id;
         }
 
         $user = Auth::user();
 
+<<<<<<< HEAD
         $pertanyaan = Pertanyaan::where(['id'=> $id])
         ->update(
             [
@@ -174,13 +208,22 @@ class PertanyaanController extends Controller
                 'isi' => $request->isi,
             ]
         );
+=======
+        $pertanyaan = Pertanyaan::where(['id' => $id])
+            ->update(
+                [
+                    'judul' => $request->judul,
+                    'isi' => $request->isi,
+                ]
+            );
+>>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
         $pertanyaan = Pertanyaan::find($id);
         // dd($user);
-        $pertanyaan->tags()->sync($tag_ids,false);
+        $pertanyaan->tags()->sync($tag_ids, false);
 
 
         $alert = Alert::success('Berhasil', 'Pertanyaan berhasil diperbaharui');
-        return redirect('pertanyaan');//->with("success",'data berhasil disimpan');
+        return redirect('pertanyaan'); //->with("success",'data berhasil disimpan');
 
     }
 
@@ -192,7 +235,25 @@ class PertanyaanController extends Controller
 
         Pertanyaan::destroy($id);
         $alert = Alert::success('Berhasil', 'Pertanyaan berhasil dihapus');
+<<<<<<< HEAD
         return redirect('pertanyaan');//->with("success",'data berhasil dihapus');
+=======
+        return redirect('pertanyaan'); //->with("success",'data berhasil dihapus');
 
+    }
+
+    function detail($id)
+    {
+
+        // echo $id;
+        // $head = \App\Jawaban::find($id)->pertanyaan;
+        $get = Pertanyaan::find($id);
+        // $detail = $get->jawaban;
+        // $get = \App\Jawaban::find($id);
+        // $get = \App\Jawaban::find($id)->pertanyaan->isi;
+        // dd($get);
+>>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
+
+        return view('pertanyaan.detail', compact('get'));
     }
 }
