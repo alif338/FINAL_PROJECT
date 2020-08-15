@@ -30,7 +30,8 @@ Route::get('/view_form', function () {
 	return view('example.form');
 });
 Route::get('/view_guest', function () {
-	return view('example.view_guest');
+	$list = [];
+	return view('example.view_guest', compact('list'));
 });
 Route::get('/detail_data', function () {
 	return view('example.view_detail');
@@ -61,8 +62,8 @@ Route::get('/data-tables', function ()
 // Route::delete('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@destroy');
 
 ////Pekan 4 , Hari 1 – Laravel CRUD (dengan Eloquent ORM)
-Route::resource('pertanyaan', 'PertanyaanController');
-// Route::resource('pertanyaan', 'PertanyaanController')->middleware('auth');
+// Route::resource('pertanyaan', 'PertanyaanController');
+Route::resource('pertanyaan', 'PertanyaanController')->middleware('auth');
 
 
 Auth::routes();
