@@ -40,4 +40,8 @@ class Pertanyaan extends Model
     {
         return $this->hasMany('App\Jawaban_relevan', 'pertanyaan_id');
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6e74f6e75bae8f9202151fe5aa17e102b5c03d0d
 }

@@ -133,6 +133,7 @@ class PertanyaanController extends Controller
             'user_id' => $user->id,
         ]);
 
+<<<<<<< HEAD
         $profil = DB::table('users')
                 ->where('id', $pertanyaan->user_id)
                 ->value('name');
@@ -144,6 +145,15 @@ class PertanyaanController extends Controller
        //     'jumlah_jawaban_relevan' => '0',
        //     'point' => '0',
        // ]);
+=======
+        $point_v = \App\Point_v::create([
+            'pertanyaan_id' => $pertanyaan->id,
+            'jumlah_upvote' => '0',
+            'jumlah_downvote' => '0',
+            'jumlah_jawaban_relevan' => '0',
+            'point' => '0',
+        ]);
+>>>>>>> 6e74f6e75bae8f9202151fe5aa17e102b5c03d0d
 
         $pertanyaan->tags()->sync($tag_ids);
 
@@ -151,8 +161,12 @@ class PertanyaanController extends Controller
         // $user->pertanyaans()->save($pertanyaan);
         // $user->pertanyaans()->associate($pertanyaan);
         $alert = Alert::success('Berhasil', 'Pertanyaan berhasil disimpan');
+<<<<<<< HEAD
     	return redirect('/view_guest');//->with("success",'data berhasil disimpan');
        // return redirect('pertanyaan'); //->with("success",'data berhasil disimpan');
+=======
+        return redirect('pertanyaan'); //->with("success",'data berhasil disimpan');
+>>>>>>> 6e74f6e75bae8f9202151fe5aa17e102b5c03d0d
 
     }
 
@@ -235,8 +249,12 @@ class PertanyaanController extends Controller
         // $detail = $get->jawaban;
         // $get = \App\Jawaban::find($id);
         // $get = \App\Jawaban::find($id)->pertanyaan->isi;
+<<<<<<< HEAD
 
 
+=======
+        // dd($get);
+>>>>>>> 6e74f6e75bae8f9202151fe5aa17e102b5c03d0d
         return view('pertanyaan.detail', compact('get'));
     }
 }
