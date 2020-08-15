@@ -27,39 +27,7 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">Contact</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
-                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                        <li><a href="#" class="dropdown-item">Some action </a></li>
-                        <li><a href="#" class="dropdown-item">Some other action</a></li>
 
-                        <li class="dropdown-divider"></li>
-
-                        <!-- Level two dropdown-->
-                        <li class="dropdown-submenu dropdown-hover">
-                            <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
-                            <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
-                                <li>
-                                    <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
-                                </li>
-
-                                <!-- Level three dropdown-->
-                                <li class="dropdown-submenu">
-                                    <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
-                                    <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
-                                        <li><a href="#" class="dropdown-item">3rd level</a></li>
-                                        <li><a href="#" class="dropdown-item">3rd level</a></li>
-                                    </ul>
-                                </li>
-                                <!-- End Level three -->
-
-                                <li><a href="#" class="dropdown-item">level 2</a></li>
-                                <li><a href="#" class="dropdown-item">level 2</a></li>
-                            </ul>
-                        </li>
-                        <!-- End Level two -->
-                    </ul>
-                </li>
             </ul>
 
             <!-- SEARCH FORM -->
@@ -76,6 +44,9 @@
         </div>
 
         <!-- Right navbar links -->
+<<<<<<< HEAD
+
+=======
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item dropdown">
@@ -87,7 +58,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                            <!-- <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle"> -->
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Brad Diesel
@@ -103,7 +74,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <!-- <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3"> -->
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     John Pierce
@@ -119,7 +90,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <!-- <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3"> -->
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Nora Silvester
@@ -166,5 +137,6 @@
                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="fas fa-th-large"></i></a>
             </li>
         </ul>
+>>>>>>> acf2f05d88c1120803b671d209217a8e3fdb0501
     </div>
 </nav>

@@ -15,7 +15,7 @@ class CreateJawabanTable extends Migration
     {
         Schema::create('jawaban', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
+            $table->string('judul')->nullable();
             $table->longText('isi');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('pertanyaan_id');
