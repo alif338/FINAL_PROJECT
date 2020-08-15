@@ -56,8 +56,8 @@ Route::get('/data-tables', function ()
 // Route::delete('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@destroy');
 
 ////Pekan 4 , Hari 1 – Laravel CRUD (dengan Eloquent ORM)
-Route::resource('pertanyaan', 'PertanyaanController');
-// Route::resource('pertanyaan', 'PertanyaanController')->middleware('auth');
+// Route::resource('pertanyaan', 'PertanyaanController');
+Route::resource('pertanyaan', 'PertanyaanController')->middleware('auth');
 
 
 Auth::routes();
